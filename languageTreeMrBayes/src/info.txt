@@ -1,0 +1,23 @@
+Automatic Language Tree reconstruction using MrBayes
+=======================================================
+
+Tree:
+------
+
+* automatic, binary language tree for loanword detection algorithms
+* using the top 200 concepts of nelex and all languages
+* character matrix is constructed using automatic cogante judgements from Taraka
+* tree is reconstructed using Mr Bayes
+* -> evidence why character methods are better than distance based ones
+
+MrBayes:
+----------
+
+"begin mrbayes;\n\tset autoclose=yes nowarn=yes;\n \tprset brlenspr = clock:uniform;\n\tprset clockvarpr = igr;\n\tlset coding=noabsencesites rates=gamma;\n\tmcmcp stoprule=yes stopval=0.01 ngen=100000000;\n\tmcmc;\n\tsump;\n\tsumt;\n\tquit;\nend;"
+
+
+DATATYPE=Restriction
+
+relaxed clock (clock:uniform, clockvarpr:igr (independet gamma rates; In the case of the IGR model, it is the rate at which the variance of the effective branch length increases over time)
+nst = gtr wird automatisch gesetzt von MrBayes durch den datatype=restriction
+root wird automatisch gesetzt
