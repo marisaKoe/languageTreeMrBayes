@@ -3,22 +3,6 @@ Created on 15.05.2019
 
 @author: marisakoe
 
-character matrix for reconstructing a language tree with MrBayes
-* character matrix represented in nex format to run directly on MrBayes
-
-TODO
-=====
-Method to read top 200 concepts 
-    * read concepts nelex and save them in file
-    
-Method for reading cogantes
-    * get all concepts and cogantes
-    * reduce concepts to the top 200 list
-    * save 200 concpets with cogante classes
-    
-Method to transfer cognate classes into a binary matrix with present=1 and absence=0
-    * save everything in nex format to read by MrBayes software
-    * set the nex file correctly
 
 
 '''
@@ -104,7 +88,6 @@ def read_nelex_cognates():
     #create defaultdict
     ##dict with key=meaning, value=dict with key=lang value=[cc]
     langs_cc = defaultdict(dict)
-    #langs_cc = defaultdict(list)
     #read the cognate file
     f = open("input/nelexAsjp.cognates")
     raw_data = f.readlines()
@@ -144,8 +127,7 @@ def write_dataMatrix(fout1, dataMatrix,numLangs, numCC):
         for c in cc:
             #append the value of the language and the sound pair to the row
             row=row+c
-        
-        #assert(len(row)==7168)
+
         #write the row and a new line
         fout.write(row+"\n")
     #write the end of the nexus file
@@ -157,7 +139,6 @@ def write_dataMatrix(fout1, dataMatrix,numLangs, numCC):
 
 
 if __name__ == '__main__':
-    #read_top_concepts()
     create_binary_matrix()
     
     
